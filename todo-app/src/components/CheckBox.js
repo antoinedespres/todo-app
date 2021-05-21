@@ -1,14 +1,10 @@
 import React from "react";
 
 function CheckBox(props) {
-    const [done, setDone] = React.useState(false);
     return (
         <React.Fragment>
-            <div
-             className="no-select" 
-             onClick={() => { setDone(!done) }}
-            >
-                {props.done ? "✓" : "X"}{props.value}
+            <div onClick={props.onClick}>
+                {props.content.done ? "✓ " : "X "}{props.content.value}
             </div>
         </React.Fragment>
     );

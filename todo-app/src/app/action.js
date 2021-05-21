@@ -1,2 +1,2 @@
 export const ADD_ITEMS = "ADD_ITEMS";
-export const SET_DONE = "SET_DONE";
+export const TOGGLE_DONE = "TOGGLE_DONE";

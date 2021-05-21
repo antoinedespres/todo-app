@@ -1,7 +1,6 @@
 // import { configureStore } from '@reduxjs/toolkit';
 import { createStore } from "redux";
-import { ADD_ITEMS } from "./action.js";
-import { SET_DONE } from "./action.js";
+import { ADD_ITEMS, TOGGLE_DONE } from "./action.js";
 
 let itemId = 0;
 
@@ -21,12 +20,20 @@ const store = createStore(function (state, action) {
           }
         }
       };
-    case SET_DONE:
-      return [
-        ...state
-      ]
+    case TOGGLE_DONE:
+      return {
+        ...state,
+        items: state?.items || [],
+        contentById: {
+          ...state?.contentById || {},
+          [action.itemId]: {
+            ...state?.contentById[action.itemId],
+            done: !action.done
+          }
+        }
+      };
     default:
-      console.log("Invalid action :", action);
+      console.log("Invalid action:", action);
       return state;
   }
 });
